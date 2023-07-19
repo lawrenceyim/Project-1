@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [SerializeField] private float moveSpeed;       // Horizontal movement speed
     [SerializeField] private float acceleration;  // Horizontal acceleration
     [SerializeField] private float deceleration;  // Horizontal deceleration
@@ -13,10 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;     // Jump force
     [SerializeField] private float jumpCooldown;
     [SerializeField] private float jumpAvailableAt;
-    [SerializeField] private float playerHeight;   // Height of the player
-    [SerializeField] private float playerWidth; // Width of the player 
+    private float playerHeight;   // Height of the player
+    private float playerWidth; // Width of the player 
 
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     private float originalGravityScale;
     [SerializeField] private bool canJump;
     [SerializeField] private bool canDoubleJump;
@@ -41,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (!canJump && IsGrounded()) {
+            jumpAvailableAt = Time.time;
             canJump = true;
             canDoubleJump = true;
         }
