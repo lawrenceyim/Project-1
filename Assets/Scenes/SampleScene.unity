@@ -630,9 +630,6 @@ MonoBehaviour:
   jumpForce: 15.7
   jumpCooldown: 0.25
   jumpAvailableAt: 0
-  playerHeight: 1
-  playerWidth: 0
-  rb: {fileID: 0}
   canJump: 0
   canDoubleJump: 0
 --- !u!1 &1401820287

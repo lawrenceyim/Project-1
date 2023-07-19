@@ -5,28 +5,25 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;       // Horizontal movement speed
-    [SerializeField] private float acceleration;  // Horizontal acceleration
-    [SerializeField] private float deceleration;  // Horizontal deceleration
-    [SerializeField] private float maxSpeed;       // Maximum horizontal speed
-
-    [SerializeField] private float jumpForce;     // Jump force
-    [SerializeField] private float jumpCooldown;
-    [SerializeField] private float jumpAvailableAt;
-    private float playerHeight;   // Height of the player
-    private float playerWidth; // Width of the player 
-
+    [SerializeField] private float acceleration;    // Horizontal acceleration
+    [SerializeField] private float deceleration;    // Horizontal deceleration
+    [SerializeField] private float maxSpeed;        // Maximum horizontal speed
+    [SerializeField] private float jumpForce;       
+    [SerializeField] private float jumpCooldown;    
+    [SerializeField] private float jumpAvailableAt; // The time at which the player can jump again
+    private float playerHeight;                     
+    private float playerWidth;                      
     private Rigidbody2D rb;
-    private float originalGravityScale;
-    [SerializeField] private bool canJump;
-    [SerializeField] private bool canDoubleJump;
-    private Vector3 leftRaycastOrigin;
-    private Vector3 rightRaycastOrigin;
+    [SerializeField] private bool canJump;         
+    [SerializeField] private bool canDoubleJump;   
+    private Vector3 leftRaycastOrigin;              // Used to determine if the player is grounded
+    private Vector3 rightRaycastOrigin;             // Used to determine if the player is grounded
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        originalGravityScale = rb.gravityScale;
         canJump = true;
+        canDoubleJump = true;
         jumpAvailableAt = Time.time;
         playerHeight = transform.localScale.y;
         playerWidth = transform.localScale.x;
@@ -65,6 +62,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump() {
+        /* 
+        Input.GetButton is used instead of Input.GetButtonDown because the latter was inconsistent. The 
+        character didn't always jump when the button was pressed.
+        A problem that occurred with Input.GetButton was that the player would jump twice with one press because the 
+        player let go off the key fast enough, resulting in wasted jump opportunities. To compensate for this problem,
+        a jump cooldown was added to stop the player from accidentally jumping twice in a row.
+        */
         if (Input.GetButton("Jump")) {
             if (Time.time < jumpAvailableAt) {
                 return;
