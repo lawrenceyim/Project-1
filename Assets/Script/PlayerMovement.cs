@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private bool canJump;         
     [SerializeField] private bool canDoubleJump;   
+    [SerializeField] private float jumpGracePeriod;
+    [SerializeField] private bool graceTimerStarted;
+    [SerializeField] private float cantJumpAt;
     private Vector3 leftRaycastOrigin;              // Used to determine if the player is grounded
     private Vector3 rightRaycastOrigin;             // Used to determine if the player is grounded
     
@@ -35,11 +38,22 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!canJump && IsGrounded() && IsNotOverHazard()) {
-            jumpAvailableAt = Time.time;
-            canJump = true;
-            canDoubleJump = true;
-        }
+        if (IsGrounded()) {
+            if (IsNotOverHazard()) {
+                jumpAvailableAt = Time.time;
+                canJump = true;
+                canDoubleJump = true;
+            }
+        } else if (canJump) {
+            if (!graceTimerStarted) {
+                cantJumpAt = Time.time + jumpGracePeriod;
+                graceTimerStarted = true;
+            } 
+            if (Time.time >= cantJumpAt) {
+                canJump = false;
+                graceTimerStarted = false;
+            }
+        }  
         Run();
         Jump();
     }
