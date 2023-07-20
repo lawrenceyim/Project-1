@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!canJump && IsGrounded()) {
+        if (!canJump && IsGrounded() && IsOverHazard) {
             jumpAvailableAt = Time.time;
             canJump = true;
             canDoubleJump = true;
@@ -94,11 +94,24 @@ public class PlayerMovement : MonoBehaviour
         rightRaycastOrigin = transform.position;
         rightRaycastOrigin.x += playerWidth / 2;
         
-        RaycastHit2D leftHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Terrain"));
-        RaycastHit2D rightHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Terrain"));
+        RaycastHit2D leftHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 0.2f, LayerMask.GetMask("Terrain"));
+        RaycastHit2D rightHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 0.2f, LayerMask.GetMask("Terrain"));
 
         if (leftHit != null && leftHit.collider != null) return true;
         if (rightHit != null && rightHit.collider != null) return true;
         return false;
+    }
+    bool IsOverHazard(){
+        leftRaycastOrigin = transform.position;
+        leftRaycastOrigin.x -= playerWidth / 2;
+        rightRaycastOrigin = transform.position;
+        rightRaycastOrigin.x += playerWidth / 2;
+
+        RaycastHit2D leftDeathHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Hazard"));
+        RaycastHit2D rightDeathHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Hazard"));
+
+        if(leftDeathHit != null && leftDeathHit.collider != null) return false; 
+        if(rightDeathHit != null && rightDeathHit.collider != null) return false; 
+        return true; 
     }
 }
