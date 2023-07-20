@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         Input.GetButton is used instead of Input.GetButtonDown because the latter was inconsistent. The 
         character didn't always jump when the button was pressed.
         A problem that occurred with Input.GetButton was that the player would jump twice with one press because the 
-        player let go off the key fast enough, resulting in wasted jump opportunities. To compensate for this problem,
+        player didn't let go off the key fast enough, resulting in wasted jump opportunities. To compensate for this problem,
         a jump cooldown was added to stop the player from accidentally jumping twice in a row.
         */
         if (Input.GetButton("Jump")) {
