@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7306166092922083061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -153,8 +153,8 @@ MonoBehaviour:
   jumpForce: 15.7
   jumpCooldown: 0.25
   jumpAvailableAt: 0
-  playerHeight: 1
-  playerWidth: 0
-  rb: {fileID: 0}
   canJump: 0
   canDoubleJump: 0
+  jumpGracePeriod: 0.5
+  graceTimerStarted: 0
+  cantJumpAt: 0
