@@ -6,6 +6,7 @@ public class FallDeath : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] private float fallDeathY;
+    [SerializeField] private Vector3 spawn;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class FallDeath : MonoBehaviour
     void Update()
     {
         if (player.transform.position.y <= fallDeathY) {
-            player.transform.position = new Vector3(0, 0, 0);
+            player.transform.position = spawn;
         }
     }
 }
