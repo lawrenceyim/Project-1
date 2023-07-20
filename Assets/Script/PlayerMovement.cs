@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!canJump && IsGrounded() && IsOverHazard()) {
+        if (!canJump && IsGrounded() && IsNotOverHazard()) {
             jumpAvailableAt = Time.time;
             canJump = true;
             canDoubleJump = true;
