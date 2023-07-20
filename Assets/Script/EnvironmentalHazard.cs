@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnvironmentalHazard : MonoBehaviour
 {
-    [SerializeField] private vector3 spawn;
+    [SerializeField] private Vector3 spawn;
     private GameObject player;
     
     // Start is called before the first frame update
