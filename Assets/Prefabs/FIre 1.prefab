@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5798012329706337334}
   - component: {fileID: 7920295395371947842}
   m_Layer: 0
-  m_Name: FIre
+  m_Name: FIre 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 32767b5c8dd08ce40b3d6acca54760a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c619e4b8f0f0aa5408977518f02b4157, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,6 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationFrames:
-  - {fileID: 21300000, guid: 32767b5c8dd08ce40b3d6acca54760a8, type: 3}
   - {fileID: 21300000, guid: c619e4b8f0f0aa5408977518f02b4157, type: 3}
+  - {fileID: 21300000, guid: 32767b5c8dd08ce40b3d6acca54760a8, type: 3}
   changeFrameInterval: 0.25
