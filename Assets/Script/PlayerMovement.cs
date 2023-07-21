@@ -9,8 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float deceleration;    // Horizontal deceleration
     [SerializeField] private float maxSpeed;        // Maximum horizontal speed
     [SerializeField] private float jumpForce;       
-    [SerializeField] private float jumpCooldown;    
-    [SerializeField] private float jumpAvailableAt; // The time at which the player can jump again
     private float playerHeight;                     
     private float playerWidth;                      
     private Rigidbody2D rb;
@@ -32,36 +30,36 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         canJump = true;
         canDoubleJump = true;
-        jumpAvailableAt = Time.time;
         playerHeight = transform.localScale.y;
         playerWidth = transform.localScale.x;
     }
 
+    /*
+    Player input detection has been moved to Update instead of FixedUpdate to improve consistency
+    */
     private void Update() {
-
+        Run();
+        Jump();
+        Teleport();
     }
 
     void FixedUpdate()
     {
         if (IsGrounded()) {
             if (IsNotOverHazard()) {
-                jumpAvailableAt = Time.time;
                 canJump = true;
                 canDoubleJump = true;
+                graceTimerStarted = false;
             }
         } else if (canJump) {
             if (!graceTimerStarted) {
                 cantJumpAt = Time.time + jumpGracePeriod;
                 graceTimerStarted = true;
-            } 
-            if (Time.time >= cantJumpAt) {
+            } else if (graceTimerStarted && Time.time >= cantJumpAt) {
                 canJump = false;
                 graceTimerStarted = false;
             }
         }  
-        Run();
-        Jump();
-        Teleport();
     }
 
     void Run() {
@@ -82,16 +80,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump() {
         /* 
-        Input.GetButton is used instead of Input.GetButtonDown because the latter was inconsistent. The 
+
+        [OUTDATED] Input.GetButton is used instead of Input.GetButtonDown because the latter was inconsistent. The 
         character didn't always jump when the button was pressed.
         A problem that occurred with Input.GetButton was that the player would jump twice with one press because the 
         player didn't let go off the key fast enough, resulting in wasted jump opportunities. To compensate for this problem,
         a jump cooldown was added to stop the player from accidentally jumping twice in a row.
         */
-        if (Input.GetButton("Jump")) {
-            if (Time.time < jumpAvailableAt) {
-                return;
-            }
+        if (Input.GetButtonDown("Jump")) {
             if (canJump || canDoubleJump) {
                 Vector2 currentVelocity = rb.velocity;
                 currentVelocity.y = 0f;
@@ -102,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
                 } else {
                     canDoubleJump = false;
                 }
-                jumpAvailableAt = Time.time + jumpCooldown;
             }
         }
     }
