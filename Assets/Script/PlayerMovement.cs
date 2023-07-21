@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float cantJumpAt;
     private Vector3 leftRaycastOrigin;              // Used to determine if the player is grounded
     private Vector3 rightRaycastOrigin;             // Used to determine if the player is grounded
+    [SerializeField] private GameObject teleportationFlag;
+    [SerializeField] private bool flagPlaced;
+    [SerializeField] private float teleportIn;
+    [SerializeField] private float teleportTimer;
+    private GameObject placedFlag;
     
     void Start()
     {
@@ -56,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         }  
         Run();
         Jump();
+        Teleport();
     }
 
     void Run() {
@@ -127,5 +133,23 @@ public class PlayerMovement : MonoBehaviour
         if(leftDeathHit != null && leftDeathHit.collider != null) return false; 
         if(rightDeathHit != null && rightDeathHit.collider != null) return false; 
         return true; 
+    }
+
+    void Teleport() {
+        if (Input.GetKey("e") && !flagPlaced) {
+            PlaceTeleportationFlag();
+        }        
+        if (!flagPlaced) return;
+        if (Time.time >= teleportIn) {
+            transform.position = placedFlag.transform.position;
+            Destroy(placedFlag);
+            flagPlaced = false;
+        }
+    }
+
+    void PlaceTeleportationFlag() {
+        placedFlag = Instantiate(teleportationFlag, transform.position, Quaternion.identity);
+        flagPlaced = true;
+        teleportIn = Time.time + teleportTimer;
     }
 }

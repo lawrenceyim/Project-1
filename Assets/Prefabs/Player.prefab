@@ -158,3 +158,7 @@ MonoBehaviour:
   jumpGracePeriod: 0.5
   graceTimerStarted: 0
   cantJumpAt: 0
+  teleportationFlag: {fileID: 5704861042025470544, guid: e71a2e1d0b6560d469d788869a2ce89e, type: 3}
+  flagPlaced: 0
+  teleportIn: 0
+  teleportTimer: 5
