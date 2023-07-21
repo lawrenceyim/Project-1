@@ -22,14 +22,14 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         Vector3 position = player.transform.position;
-        if (player.transform.position.x > rightLimit) {
+        if (position.x > rightLimit) {
             position.x = rightLimit;
-        } else if (player.transform.position.x < leftLimit) {
+        } else if (position.x < leftLimit) {
             position.x = leftLimit;
         } 
-        if (player.transform.position.y > topLimit) {
+        if (position.y > topLimit) {
             position.y = topLimit;
-        } else if (player.transform.position.y < bottomLimit) {
+        } else if (position.y < bottomLimit) {
             position.y = bottomLimit;
         }
         transform.position = new Vector3(position.x, position.y, z);

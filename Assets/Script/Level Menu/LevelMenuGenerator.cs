@@ -22,18 +22,16 @@ public class LevelMenuGenerator : MonoBehaviour
         Instantiate(borderlessDayBlock, new Vector3(6 + xOffset, 1 + yOffset, 0), Quaternion.identity).GetComponent<TextMeshPro>().text = "L";
         Instantiate(borderlessDayBlock, new Vector3(7 + xOffset, 1 + yOffset, 0), Quaternion.identity).GetComponent<TextMeshPro>().text = "";
 
-        bool nextLevelMarked = false;
-
         int day = 1;
         for (int i = 0; i < 4; i++) {
             for (int j = 1; j <= 7; j++) {
                 GameObject temp = Instantiate(dayBlock, new Vector3(j + xOffset, -i + yOffset, 0), Quaternion.identity);
                 temp.GetComponent<TextMeshPro>().text = day.ToString();
-                // Enabled if complete to display check
-                // temp.transform.Find("Check").GetComponent<SpriteRenderer>().enabled = true;
-                if (!nextLevelMarked && temp.transform.Find("Check").GetComponent<SpriteRenderer>().enabled == false) {
+                if (day - 1 == PlayerData.levelsCompleted) {
                     temp.transform.Find("Green").GetComponent<SpriteRenderer>().enabled = true;
-                    nextLevelMarked = true;
+                }
+                if (day <= PlayerData.levelsCompleted) {
+                    temp.transform.Find("Check").GetComponent<SpriteRenderer>().enabled = true;
                 }
                 day++;
             }
