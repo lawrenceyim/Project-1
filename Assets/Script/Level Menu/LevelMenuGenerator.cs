@@ -29,9 +29,11 @@ public class LevelMenuGenerator : MonoBehaviour
                 temp.GetComponent<TextMeshPro>().text = day.ToString();
                 if (day - 1 == PlayerData.levelsCompleted) {
                     temp.transform.Find("Green").GetComponent<SpriteRenderer>().enabled = true;
+                    temp.GetComponent<LevelStarter>().MakeLevelAvailable();
                 }
                 if (day <= PlayerData.levelsCompleted) {
                     temp.transform.Find("Check").GetComponent<SpriteRenderer>().enabled = true;
+                    temp.GetComponent<LevelStarter>().MakeLevelAvailable();
                 }
                 day++;
             }
