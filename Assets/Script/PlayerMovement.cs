@@ -24,9 +24,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float teleportIn;
     [SerializeField] private float teleportTimer;
     private GameObject placedFlag;
-    
+    private Animator animator;
+
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         canJump = true;
         canDoubleJump = true;
@@ -46,12 +48,14 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (IsGrounded()) {
+            animator.SetBool("IsGrounded", true);
             if (IsNotOverHazard()) {
                 canJump = true;
                 canDoubleJump = true;
                 graceTimerStarted = false;
             }
         } else if (canJump) {
+            animator.SetBool("IsGrounded", false);
             if (!graceTimerStarted) {
                 cantJumpAt = Time.time + jumpGracePeriod;
                 graceTimerStarted = true;
@@ -67,13 +71,22 @@ public class PlayerMovement : MonoBehaviour
         float currentVelocity = rb.velocity.x;
         // Acceleration and deceleration
         if (horizontalInput != 0)
-        {
+        {   Vector3 scale = transform.localScale;
+            if (horizontalInput > 0) {
+                scale.x = Mathf.Abs(scale.x);
+            } else {
+                scale.x = -Mathf.Abs(scale.x);
+            }
+            transform.localScale = scale;
+
+            animator.SetBool("Moving", true);
             float targetVelocity = Mathf.Clamp(horizontalInput * moveSpeed, -maxSpeed, maxSpeed);
             float accelerationValue = (horizontalInput * moveSpeed >= currentVelocity) ? acceleration : deceleration;
             rb.velocity = new Vector2(Mathf.MoveTowards(currentVelocity, targetVelocity, accelerationValue * Time.deltaTime), rb.velocity.y);
         }
         else
         {
+            animator.SetBool("Moving", false);
             rb.velocity = new Vector2(Mathf.MoveTowards(currentVelocity, 0f, deceleration * Time.deltaTime), rb.velocity.y);
         }
     }
@@ -88,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
         */
         if (Input.GetButtonDown("Jump")) {
             if (canJump || canDoubleJump) {
+                animator.SetBool("IsGrounded", false);
                 Vector2 currentVelocity = rb.velocity;
                 currentVelocity.y = 0f;
                 rb.velocity = currentVelocity;
@@ -107,8 +121,8 @@ public class PlayerMovement : MonoBehaviour
         rightRaycastOrigin = transform.position;
         rightRaycastOrigin.x += playerWidth / 2;
         
-        RaycastHit2D leftHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Terrain"));
-        RaycastHit2D rightHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Terrain"));
+        RaycastHit2D leftHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 1.7f, LayerMask.GetMask("Terrain"));
+        RaycastHit2D rightHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 1.7f, LayerMask.GetMask("Terrain"));
 
         if (leftHit != null && leftHit.collider != null) return true;
         if (rightHit != null && rightHit.collider != null) return true;
@@ -121,8 +135,8 @@ public class PlayerMovement : MonoBehaviour
         rightRaycastOrigin = transform.position;
         rightRaycastOrigin.x += playerWidth / 2;
 
-        RaycastHit2D leftDeathHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Hazard"));
-        RaycastHit2D rightDeathHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 0.6f, LayerMask.GetMask("Hazard"));
+        RaycastHit2D leftDeathHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 1.7f, LayerMask.GetMask("Hazard"));
+        RaycastHit2D rightDeathHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 1.7f, LayerMask.GetMask("Hazard"));
 
         if(leftDeathHit != null && leftDeathHit.collider != null) return false; 
         if(rightDeathHit != null && rightDeathHit.collider != null) return false; 
