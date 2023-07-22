@@ -80,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump() {
         /* 
-
         [OUTDATED] Input.GetButton is used instead of Input.GetButtonDown because the latter was inconsistent. The 
         character didn't always jump when the button was pressed.
         A problem that occurred with Input.GetButton was that the player would jump twice with one press because the 
