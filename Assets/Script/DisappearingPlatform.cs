@@ -5,8 +5,8 @@ using UnityEngine;
 public class DisappearingPlatform : MonoBehaviour
 {
     [SerializeField] private bool jumpedOn;
-    [SerializeField] private float disappearAfter;
     private float jumpedOnAt;
+    [SerializeField] private float disappearAfter;
     private int frameCount = 0;
 
     private void OnCollisionEnter2D(Collision2D other) {
@@ -16,7 +16,6 @@ public class DisappearingPlatform : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (jumpedOn) {
@@ -26,20 +25,37 @@ public class DisappearingPlatform : MonoBehaviour
             }
         }
         if (jumpedOn && Time.time - jumpedOnAt >= disappearAfter) {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }    
     }
 
     void Blink() {
         for (int i = 0; i < transform.childCount; i++) {
-            SpriteRenderer sr = transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
-            if (sr != null) {
-                if (sr.color != Color.red) {
-                    sr.color = Color.red;
-                } else {
-                    sr.color = Color.white;
-                }
+            SpriteRenderer renderer = transform.GetChild(i).GetComponent<SpriteRenderer>();
+            if (renderer == null) {
+                continue;
+            }
+            if (renderer.color == Color.red) {
+                renderer.color = Color.white;
+            } else {
+                renderer.color = Color.red;
             }
         }
+    }
+
+    private void OnEnable() {
+        ResetObject();
+    }
+
+    public void ResetObject() {
+        for (int i = 0; i < transform.childCount; i++) {
+            SpriteRenderer renderer = transform.GetChild(i).GetComponent<SpriteRenderer>();
+            if (renderer == null) {
+                continue;
+            }
+            renderer.color = Color.white;
+        }
+        jumpedOn = false;
+        frameCount = 0;
     }
 }

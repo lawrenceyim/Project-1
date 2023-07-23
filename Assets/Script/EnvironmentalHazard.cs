@@ -5,19 +5,17 @@ using UnityEngine;
 public class EnvironmentalHazard : MonoBehaviour
 {
     [SerializeField] private Vector3 spawn;
-    private GameObject player;
     
-    // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");  
-        spawn =  player.transform.position;   
+        spawn =  GameObject.FindGameObjectWithTag("Player").transform.position;   
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            player.transform.position = spawn;
-            player.transform.SetParent(null);
+            GameObject.FindGameObjectWithTag("Level Manager").GetComponent<Reset>().ResetObjects();
+            other.gameObject.transform.position = spawn;
+            other.gameObject.transform.SetParent(null);
         }
     }
 

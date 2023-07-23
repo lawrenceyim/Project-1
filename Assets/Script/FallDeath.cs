@@ -18,6 +18,7 @@ public class FallDeath : MonoBehaviour
     void Update()
     {
         if (player.transform.position.y <= fallDeathY) {
+            gameObject.GetComponent<Reset>().ResetObjects();
             player.transform.position = spawn;
         }
     }

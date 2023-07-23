@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2513569569629088867}
   - component: {fileID: 2513569569629088866}
+  - component: {fileID: -6965428515305746190}
   m_Layer: 0
   m_Name: Level Manager
-  m_TagString: Untagged
+  m_TagString: Level Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,4 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ba6542e50f18945be3c53798cf961c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallDeathY: -5
+  fallDeathY: -10
+  spawn: {x: 0, y: 0, z: -2}
+--- !u!114 &-6965428515305746190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2513569569629088869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73cf7b72b8e0e3458936d1b3c7b1694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetObjects: []
