@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         canJump = true;
