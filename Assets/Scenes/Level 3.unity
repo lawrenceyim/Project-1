@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &394920256
+--- !u!1001 &334227135
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -136,12 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7306166092922083059, guid: e1cd9c568eef30c498a51c70ea8ccb61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -8.49
       objectReference: {fileID: 0}
     - target: {fileID: 7306166092922083059, guid: e1cd9c568eef30c498a51c70ea8ccb61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
-
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7306166092922083059, guid: e1cd9c568eef30c498a51c70ea8ccb61, type: 3}
       propertyPath: m_LocalPosition.z
@@ -206,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2513569569629088866, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
       propertyPath: spawn.y
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2513569569629088866, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
       propertyPath: spawn.z
@@ -258,11 +257,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2513569569629088869, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
       propertyPath: m_Name
-      value: Level Manager (1)
+      value: Level Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
-
 --- !u!1001 &1146836163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -384,14 +382,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Terrain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5126423561268924248, guid: 59ccd05e5c9b13e43b1b20b314c22ad5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 59ccd05e5c9b13e43b1b20b314c22ad5, type: 3}
 --- !u!1 &1992005462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1614494025344509126, guid: 59ccd05e5c9b13e43b1b20b314c22ad5, type: 3}
   m_PrefabInstance: {fileID: 1992005461}
   m_PrefabAsset: {fileID: 0}
-
 --- !u!1 &2000322845
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,4 +531,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cf6ab69c9c367b42b924a2c16b7fa64, type: 3}
-

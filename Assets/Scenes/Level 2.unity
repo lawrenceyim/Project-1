@@ -390,6 +390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a75492cd00a5f4b40804b4e019ab1fed, type: 3}
+--- !u!1 &244905664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852911562436909427, guid: bc8f0fc977a0c6e49bf166c4a257acd0, type: 3}
+  m_PrefabInstance: {fileID: 1240686726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339267099
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +479,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &358963196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852911562436909427, guid: bc8f0fc977a0c6e49bf166c4a257acd0, type: 3}
+  m_PrefabInstance: {fileID: 1723683527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &385889191
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,6 +789,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1852911562436909424, guid: bc8f0fc977a0c6e49bf166c4a257acd0, type: 3}
   m_PrefabInstance: {fileID: 753990093}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &754810564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852911562436909427, guid: bc8f0fc977a0c6e49bf166c4a257acd0, type: 3}
+  m_PrefabInstance: {fileID: 753990093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &885379257
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,6 +1004,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1145129567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1852911562436909427, guid: bc8f0fc977a0c6e49bf166c4a257acd0, type: 3}
+  m_PrefabInstance: {fileID: 2127287983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1240686726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1469,6 +1489,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6965428515305746190, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
+      propertyPath: resetObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -6965428515305746190, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
+      propertyPath: resetObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 358963196}
+    - target: {fileID: -6965428515305746190, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
+      propertyPath: resetObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 244905664}
+    - target: {fileID: -6965428515305746190, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
+      propertyPath: resetObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1145129567}
+    - target: {fileID: -6965428515305746190, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
+      propertyPath: resetObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 754810564}
     - target: {fileID: 2513569569629088866, guid: fb2b813300e8bb941a62f81232ebe363, type: 3}
       propertyPath: spawn.x
       value: -20
