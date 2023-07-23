@@ -107,12 +107,16 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsGrounded() {
         leftRaycastOrigin = transform.position;
-        leftRaycastOrigin.x -= playerWidth / 2;
+        leftRaycastOrigin.x -= playerWidth / 2 - .1f;
         rightRaycastOrigin = transform.position;
-        rightRaycastOrigin.x += playerWidth / 2;
+        rightRaycastOrigin.x += playerWidth / 2 + .1f;
         
         RaycastHit2D leftHit = Physics2D.Raycast(leftRaycastOrigin, Vector2.down, playerHeight * 1.7f, LayerMask.GetMask("Terrain"));
         RaycastHit2D rightHit = Physics2D.Raycast(rightRaycastOrigin, Vector2.down, playerHeight * 1.7f, LayerMask.GetMask("Terrain"));
+
+        Debug.DrawRay(leftRaycastOrigin, Vector2.down * playerHeight * 1.7f, Color.red);
+        Debug.DrawRay(rightRaycastOrigin, Vector2.down * playerHeight * 1.7f, Color.red);
+
 
         if (leftHit != null && leftHit.collider != null) return true;
         if (rightHit != null && rightHit.collider != null) return true;
