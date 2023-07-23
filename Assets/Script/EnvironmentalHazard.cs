@@ -17,6 +17,7 @@ public class EnvironmentalHazard : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             player.transform.position = spawn;
+            player.transform.SetParent(null);
         }
     }
 
