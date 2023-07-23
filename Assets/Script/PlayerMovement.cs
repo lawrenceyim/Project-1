@@ -37,9 +37,6 @@ public class PlayerMovement : MonoBehaviour
         playerWidth = transform.localScale.x;
     }
 
-    /*
-    Player input detection has been moved to Update instead of FixedUpdate to improve consistency
-    */
     private void Update() {
         Run();
         Jump();
@@ -70,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
     void Run() {
         float horizontalInput = Input.GetAxis("Horizontal");
         float currentVelocity = rb.velocity.x;
-        // Acceleration and deceleration
         if (horizontalInput != 0)
         {   Vector3 scale = transform.localScale;
             if (horizontalInput > 0) {
@@ -93,13 +89,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump() {
-        /* 
-        [OUTDATED] Input.GetButton is used instead of Input.GetButtonDown because the latter was inconsistent. The 
-        character didn't always jump when the button was pressed.
-        A problem that occurred with Input.GetButton was that the player would jump twice with one press because the 
-        player didn't let go off the key fast enough, resulting in wasted jump opportunities. To compensate for this problem,
-        a jump cooldown was added to stop the player from accidentally jumping twice in a row.
-        */
         if (Input.GetButtonDown("Jump")) {
             if (canJump || canDoubleJump) {
                 animator.SetBool("IsGrounded", false);
