@@ -1,1 +1,1 @@
-{"levelsCompleted":4,"collected":[]}
+{"levelsCompleted":3,"collected":[1]}
