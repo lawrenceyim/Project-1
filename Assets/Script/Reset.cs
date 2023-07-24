@@ -6,9 +6,12 @@ public class Reset : MonoBehaviour
 {
     [SerializeField] private GameObject[] resetObjects;
     private List<Vector3> startingPositions;
-
+    private GameObject mailbox;
+    
     void Start()
     {
+        mailbox = GameObject.FindGameObjectWithTag("Mail Box");
+
         startingPositions = new List<Vector3>(); 
         for (int i = 0; i < resetObjects.Length; i++) {
             startingPositions.Add(resetObjects[i].transform.position);
@@ -21,5 +24,6 @@ public class Reset : MonoBehaviour
             resetObjects[i].SetActive(true);
             resetObjects[i].transform.position = startingPositions[i];
         }
+        mailbox.GetComponent<MailBox>().ResetLettersFound();
     }
 }

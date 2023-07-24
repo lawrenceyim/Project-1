@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - Level Manager
+  - Mail Box
   layers:
   - Default
   - TransparentFX
