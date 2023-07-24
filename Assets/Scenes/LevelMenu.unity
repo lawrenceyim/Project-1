@@ -240,6 +240,7 @@ MonoBehaviour:
   borderlessDayBlock: {fileID: 864566715461427624, guid: 052ec987830cbb84a92cf171574297c0, type: 3}
   xOffset: -3.5
   yOffset: 2
+  saveResetPrefab: {fileID: 3932275313721493054, guid: 6f094ac47dabfb14f86b03637242bc3a, type: 3}
 --- !u!4 &811965869
 Transform:
   m_ObjectHideFlags: 0

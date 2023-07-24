@@ -10,10 +10,12 @@ public class LevelMenuGenerator : MonoBehaviour
     [SerializeField] private GameObject borderlessDayBlock;
     [SerializeField] private float xOffset;
     [SerializeField] private float yOffset;
+    [SerializeField] private GameObject saveResetPrefab;
 
-    // Start is called before the first frame update
     void Start()
     {   
+        Instantiate(saveResetPrefab, new Vector3(.5f, -4f, 0f), Quaternion.identity);
+
         Instantiate(borderlessDayBlock, new Vector3(1 + xOffset, 1 + yOffset, 0), Quaternion.identity).GetComponent<TextMeshPro>().text = "";
         Instantiate(borderlessDayBlock, new Vector3(2 + xOffset, 1 + yOffset, 0), Quaternion.identity).GetComponent<TextMeshPro>().text = "L";
         Instantiate(borderlessDayBlock, new Vector3(3 + xOffset, 1 + yOffset, 0), Quaternion.identity).GetComponent<TextMeshPro>().text = "E";

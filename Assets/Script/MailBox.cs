@@ -9,6 +9,10 @@ public class MailBox : MonoBehaviour
     [SerializeField] GameObject[] letters;
     private List<int> collectedLetters;
 
+    private void Start() {
+        collectedLetters = new List<int>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
             if (day > PlayerData.levelsCompleted) {

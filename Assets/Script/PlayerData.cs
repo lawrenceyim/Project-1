@@ -17,8 +17,7 @@ public static class PlayerData
         if (File.Exists(Application.dataPath + "/save.txt")) {
             LoadData();
         } else {
-            levelsCompleted = 0;
-            collected = new List<int>();
+            ResetSave();
         }
     }
 
@@ -36,6 +35,12 @@ public static class PlayerData
         levelsCompleted = saveObject.levelsCompleted;
         collected = saveObject.collected;
         Debug.Log(saveString);
+    }
+
+    public static void ResetSave() {
+        collected = new List<int>();
+        levelsCompleted = 0;
+        SaveData();
     }
 
     private class SaveObject {
