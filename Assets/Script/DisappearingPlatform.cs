@@ -31,6 +31,7 @@ public class DisappearingPlatform : MonoBehaviour
 
     void Blink() {
         for (int i = 0; i < transform.childCount; i++) {
+            if (transform.GetChild(i).CompareTag("Player")) continue;
             SpriteRenderer renderer = transform.GetChild(i).GetComponent<SpriteRenderer>();
             if (renderer == null) {
                 continue;
