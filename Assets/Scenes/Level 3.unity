@@ -660,7 +660,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 150978956203439712, guid: a75492cd00a5f4b40804b4e019ab1fed, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 150978956203439718, guid: a75492cd00a5f4b40804b4e019ab1fed, type: 3}
       propertyPath: m_text
