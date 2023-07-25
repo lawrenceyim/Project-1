@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool flagPlaced;
     [SerializeField] private float teleportIn;
     [SerializeField] private float teleportTimer;
+    [SerializeField] private float dashForce;
     private GameObject placedFlag;
     private Animator animator;
 
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update() {
         Run();
         Jump();
+        Dash();
         Teleport();
     }
 
@@ -96,6 +98,28 @@ public class PlayerMovement : MonoBehaviour
                 currentVelocity.y = 0f;
                 rb.velocity = currentVelocity;
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                if (canJump) {
+                    canJump = false;
+                } else {
+                    canDoubleJump = false;
+                }
+            }
+        }
+    }
+
+    void Dash() {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            if (canJump || canDoubleJump) {
+                Vector2 currentVelocity = rb.velocity;
+                currentVelocity.x = 0f;
+                currentVelocity.y = 0f;
+                if (Input.GetKey("a")) {
+                    rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+                } else if (Input.GetKey("d")) {
+                    rb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+                } else {
+                    return;
+                }
                 if (canJump) {
                     canJump = false;
                 } else {
