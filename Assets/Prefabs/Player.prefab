@@ -161,6 +161,7 @@ MonoBehaviour:
   flagPlaced: 0
   teleportIn: 0
   teleportTimer: 5
+  dashForce: 20
 --- !u!95 &-6147562833114446382
 Animator:
   serializedVersion: 4
