@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1357698041041196842}
   - component: {fileID: 1357698041041196845}
   m_Layer: 6
-  m_Name: One Way Platform
+  m_Name: One Way Ledge
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1203216882, guid: 5504523ba5d0a39429b8454e64c31cf8, type: 3}
+  m_Sprite: {fileID: -304295260, guid: 5504523ba5d0a39429b8454e64c31cf8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
