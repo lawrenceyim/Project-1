@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpedOn: 0
-  disappearAfter: 2
+  disappearAfter: 1
 --- !u!1 &2916352675709558937
 GameObject:
   m_ObjectHideFlags: 0
